@@ -14,16 +14,22 @@ export default {
       <div class="container">
             <div class="row row-cols-4 g-1">
                   <div class="col" v-for="movie in store.movies">
-                        <div class="card card-body">
-                              <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
-                              <h4 class="card-text">Original Title: {{ movie.original_title || movie.original_name }}
-                              </h4>
-                              <h4 class="card-text">Language:
-                                    <!-- <img src="../assets/img/UKFlag.png" alt=""> -->
-                                    <img :src="store.flagsChange(movie.original_language)" alt="">
-                              </h4>
-                              <small>Rating {{ movie.vote_average }}</small>
+                        <div class="card">
+                              <img :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+                                    class="card-img-top" alt="...">
 
+                              <div class="card-body">
+                                    <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
+                                    <h5 class="card-text">Original Title: {{ movie.original_title || movie.original_name
+                                    }}
+                                    </h5>
+                                    <h6 class="card-text">Language:
+
+                                          <img :src="store.flagsChange(movie.original_language)" alt="" class="flag">
+                                    </h6>
+                                    <small>Rating {{ movie.vote_average }}</small>
+
+                              </div>
                         </div>
                   </div>
             </div>
@@ -37,11 +43,16 @@ export default {
 
       .card {
             border: 1px solid;
-            height: 500px;
+            height: 800px;
 
-            img {
+            img.card-img-top {
+                  width: 100%;
+            }
+
+            img.flag {
                   width: 50px;
             }
+
       }
 }
 </style>
