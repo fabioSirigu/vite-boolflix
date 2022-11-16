@@ -2,6 +2,14 @@ import { reactive } from 'vue'
 import axios from 'axios'
 
 export const store = reactive({
+      flagImg: '',
+      flags: {
+            en: '/img/UKFlag.png',
+            it: '/img/italyFlag.png',
+            de: '/img/germanyFlag.png',
+            spain: '/img/spainFlag.png',
+            fr: '/img/franceFlag.png',
+      },
       movies: null,
       url: 'https://api.themoviedb.org/3/search/movie',
       params: {
@@ -29,6 +37,19 @@ export const store = reactive({
             store.callApi(moviesUrl)
 
       },
+      flagsChange(lang) {
+            if (lang === 'en') {
+                  return store.flags.en
+            } else if (lang === 'it') {
+                  return store.flags.it
+            } else if (lang === 'de') {
+                  return store.flags.de
+            }
+            else if (lang === 'fr') {
+                  return store.flags.fr
+            }
+            console.log('no');
+      }
       /* inputFunction() {
             console.log('input log');
 

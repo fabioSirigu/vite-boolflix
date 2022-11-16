@@ -17,7 +17,10 @@ export default {
                         <div class="card card-body">
                               <h3 class="card-title">Title: {{ movie.title }}</h3>
                               <h4 class="card-text">Original Title: {{ movie.original_title }}</h4>
-                              <h4 class="card-text">Language: {{ movie.original_language }}</h4>
+                              <h4 class="card-text">Language:
+                                    <!-- <img src="../assets/img/UKFlag.png" alt=""> -->
+                                    <img :src="store.flagsChange(movie.original_language)" alt="">
+                              </h4>
                               <small>Rating {{ movie.vote_average }}</small>
 
                         </div>
@@ -33,7 +36,11 @@ export default {
 
       .card {
             border: 1px solid;
-            height: 250px;
+            height: 500px;
+
+            img {
+                  width: 50px;
+            }
       }
 }
 </style>
