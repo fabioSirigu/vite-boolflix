@@ -14,7 +14,7 @@ export default {
 }
 </script>
 <template>
-      <div class="searchBox">
+      <div class="searchBox text-center">
             <input v-model="store.params.query" class="form-control form-control-lg" type="search"
                   placeholder="Search Movie!">
             <button class="btn btn-primary" @click="store.searchMovies()">Search</button>

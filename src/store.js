@@ -58,10 +58,6 @@ export const store = reactive({
             else if (lang === 'es') {
                   return store.flags.es
             }
-            console.log('no');
       }
-      /* inputFunction() {
-            console.log('input log');
 
-      } */
 })

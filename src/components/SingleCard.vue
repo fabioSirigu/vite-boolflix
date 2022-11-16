@@ -12,8 +12,8 @@ export default {
 <template>
 
       <div class="container">
-            <div class="row row-cols-3 gap-2">
-                  <div class="col-3" v-for="movie in store.movies">
+            <div class="row row-cols-4 g-1">
+                  <div class="col" v-for="movie in store.movies">
                         <div class="card card-body">
                               <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
                               <h4 class="card-text">Original Title: {{ movie.original_title || movie.original_name }}
