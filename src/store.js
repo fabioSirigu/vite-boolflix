@@ -7,11 +7,12 @@ export const store = reactive({
             en: '/img/UKFlag.png',
             it: '/img/italyFlag.png',
             de: '/img/germanyFlag.png',
-            spain: '/img/spainFlag.png',
+            es: '/img/spainFlag.png',
             fr: '/img/franceFlag.png',
       },
       movies: null,
-      url: 'https://api.themoviedb.org/3/search/movie',
+      urlMovies: 'https://api.themoviedb.org/3/search/movie',
+      urlSeries: 'https://api.themoviedb.org/3/search/tv',
       params: {
             appKey: 'bf0adbbc7cc3cff932de6b4b6b5eef10',
             query: ''
@@ -28,13 +29,19 @@ export const store = reactive({
                   })
       },
       searchMovies() {
-            let moviesUrl = store.callApi(`${store.url}?api_key=${store.params.appKey}&query=${store.params.query}`)
+            let moviesUrl = store.callApi(`${store.urlMovies}?api_key=${store.params.appKey}&query=${store.params.query}`)
+
+            let seriesUrl = store.callApi(`${store.urlSeries}?api_key=${store.params.appKey}&query=${store.params.query}`)
+
             if (store.params.query !== '') {
                   const selectMovies = store.params.query
 
-                  moviesUrl = store.callApi(`${store.url}?api_key=${store.params.appKey}&query=${selectMovies}`)
+                  moviesUrl = store.callApi(`${store.urlMovies}?api_key=${store.params.appKey}&query=${selectMovies}`)
+
+                  seriesUrl = store.callApi(`${store.urlSeries}?api_key=${store.params.appKey}&query=${selectMovies}`)
             }
             store.callApi(moviesUrl)
+            store.callApi(seriesUrl)
 
       },
       flagsChange(lang) {
@@ -47,6 +54,9 @@ export const store = reactive({
             }
             else if (lang === 'fr') {
                   return store.flags.fr
+            }
+            else if (lang === 'es') {
+                  return store.flags.es
             }
             console.log('no');
       }

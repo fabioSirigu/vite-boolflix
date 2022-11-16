@@ -15,8 +15,9 @@ export default {
             <div class="row row-cols-3 gap-2">
                   <div class="col-3" v-for="movie in store.movies">
                         <div class="card card-body">
-                              <h3 class="card-title">Title: {{ movie.title }}</h3>
-                              <h4 class="card-text">Original Title: {{ movie.original_title }}</h4>
+                              <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
+                              <h4 class="card-text">Original Title: {{ movie.original_title || movie.original_name }}
+                              </h4>
                               <h4 class="card-text">Language:
                                     <!-- <img src="../assets/img/UKFlag.png" alt=""> -->
                                     <img :src="store.flagsChange(movie.original_language)" alt="">
