@@ -22,10 +22,11 @@ export default {
     
 <style lang="scss" scoped>
 main {
-      background-color: rgb(0, 0, 0);
-      margin-top: 500px;
+      margin-top: 300px;
       padding-top: 50px;
       position: relative;
       z-index: 1;
+      height: calc(100vh - 450px);
+      overflow-y: scroll;
 }
 </style>

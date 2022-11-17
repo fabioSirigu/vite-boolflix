@@ -15,11 +15,12 @@ export default {
             <div class="row row-cols-3 g-4">
                   <div class="col" v-for="movie in store.movies">
                         <div class="card">
-                              <img :src="store.posterUrl + store.sizePoster + movie.poster_path" class="card-img-top"
-                                    :alt="movie.title">
+                              <div class="no-image" v-if="movie.poster_path === null"></div>
+                              <img v-else :src="store.posterUrl + store.sizePoster + movie.poster_path"
+                                    class="card-img-top" :alt="movie.title">
 
                               <div class="card-body">
-                                    <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
+                                    <h3 class="card-title card-text">Title: {{ movie.title || movie.name }}</h3>
                                     <h4 class="card-text">Original Title: {{ movie.original_title || movie.original_name
                                     }}
                                     </h4>
@@ -28,12 +29,13 @@ export default {
                                           <img :src="store.flagsChange(movie.original_language)" alt="" class="flag">
                                     </h4>
                                     <!-- <small>Rating: {{ store.roundedVote(movie.vote_average / 2) }} / 5</small> -->
-                                    <div class="stars">
+                                    <div class="stars card-text">
                                           <h4>Voto:</h4>
-                                          <img src="img/favorite.png" alt=""
+                                          <h4 v-if="movie.vote_average === 0"> UNRATED </h4>
+                                          <img v-else src="img/favorite.png" alt=""
                                                 v-for="star in store.roundedVote(movie.vote_average / 2)">
                                     </div>
-                                    <div class="overview">
+                                    <div class="overview" v-show="movie.overview !== ''">
                                           <h4>Description</h4>
                                           <p>{{ movie.overview }}</p>
                                     </div>
@@ -60,6 +62,11 @@ export default {
 
 
 
+            .no-image {
+                  height: 100%;
+                  background-color: black;
+
+            }
 
             img.card-img-top {
                   width: 100%;
@@ -76,7 +83,12 @@ export default {
                   overflow-y: auto;
 
                   img.flag {
-                        width: 50px;
+                        width: 35px;
+                  }
+
+                  .card-text {
+                        font-weight: bold;
+                        padding: 0.8rem 0;
                   }
 
                   .stars {
@@ -90,7 +102,8 @@ export default {
                   }
             }
 
-            &:hover .card-img-top {
+            &:hover .card-img-top,
+            &:hover .no-image {
                   opacity: 0.4;
             }
 
