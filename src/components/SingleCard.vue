@@ -15,8 +15,8 @@ export default {
             <div class="row row-cols-4 g-1">
                   <div class="col" v-for="movie in store.movies">
                         <div class="card">
-                              <img :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
-                                    class="card-img-top" alt="...">
+                              <img :src="store.posterUrl + store.sizePoster + movie.poster_path" class="card-img-top"
+                                    :alt="movie.title">
 
                               <div class="card-body">
                                     <h3 class="card-title">Title: {{ movie.title || movie.name }}</h3>
@@ -27,7 +27,7 @@ export default {
 
                                           <img :src="store.flagsChange(movie.original_language)" alt="" class="flag">
                                     </h6>
-                                    <small>Rating {{ movie.vote_average }}</small>
+                                    <small>Rating {{ store.roundedVote(movie.vote_average) }}</small>
 
                               </div>
                         </div>

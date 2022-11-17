@@ -2,8 +2,8 @@ import { reactive } from 'vue'
 import axios from 'axios'
 
 export const store = reactive({
-      /* posterUrl: 'https://image.tmdb.org/t/p/',
-      sizePoster: 'original/', */
+      posterUrl: 'https://image.tmdb.org/t/p/',
+      sizePoster: 'original/',
       flagImg: '',
       flags: {
             en: '/img/UKFlag.png',
@@ -60,6 +60,9 @@ export const store = reactive({
             else if (lang === 'es') {
                   return store.flags.es
             }
+      },
+      roundedVote(vote) {
+            return Math.ceil(vote)
       }
 
 })
