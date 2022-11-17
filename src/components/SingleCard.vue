@@ -27,7 +27,11 @@ export default {
 
                                           <img :src="store.flagsChange(movie.original_language)" alt="" class="flag">
                                     </h6>
-                                    <small>Rating {{ store.roundedVote(movie.vote_average) }}</small>
+                                    <small>Rating: {{ store.roundedVote(movie.vote_average / 2) }} / 5</small>
+                                    <div class="stars">
+                                          <img src="img/favorite.png" alt=""
+                                                v-for="star in store.roundedVote(movie.vote_average / 2)">
+                                    </div>
 
                               </div>
                         </div>
@@ -53,6 +57,14 @@ export default {
                   width: 50px;
             }
 
+            .stars {
+
+                  img {
+                        width: 30px
+                  }
+
+
+            }
       }
 }
 </style>
