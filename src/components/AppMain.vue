@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store.js'
-import SingleCard from './SingleCard.vue'
+import SingleCard from './layouts/SingleCard.vue'
 export default {
       name: 'AppHeader',
       components: {
@@ -14,24 +14,18 @@ export default {
 }
 </script>
 <template>
-      <div class="searchBox text-center">
-            <input v-model="store.params.query" class="form-control form-control-lg" type="search"
-                  placeholder="Search Movie!">
-            <button class="btn btn-primary" @click="store.searchMovies()">Search</button>
-      </div>
-      <SingleCard />
+      <main>
+            <SingleCard />
+      </main>
 
 </template>
     
 <style lang="scss" scoped>
-.searchBox {
-      padding: 1rem;
-
-      input {
-            width: fit-content;
-            display: inline-block;
-            margin-right: 1rem;
-
-      }
+main {
+      background-color: rgb(0, 0, 0);
+      margin-top: 500px;
+      padding-top: 50px;
+      position: relative;
+      z-index: 1;
 }
 </style>
