@@ -21,30 +21,34 @@ export const store = reactive({
       },
       callApi: (url) => {
             axios.get(url)
-                  .then(response => {
-                        console.log(response.data.results);
-                        store.movies = response.data.results
+                  .then(function (response) {
+
+                        if (store.movies === null) {
+                              store.movies = response.data.results
+                        } else {
+                              response.data.results.forEach(element => {
+                                    store.movies.push(element)
+                              });
+                        }
+                        console.log(store.movies);
 
                   })
-                  .catch(err => {
-                        store.error = err.message
-                  })
+                  .catch(function (error) {
+                        console.log(error);
+                  });
+
       },
       searchMovies() {
-            let moviesUrl = store.callApi(`${store.urlMovies}?api_key=${store.params.appKey}&query=${store.params.query}`)
+            store.movies = null
 
-            let seriesUrl = store.callApi(`${store.urlSeries}?api_key=${store.params.appKey}&query=${store.params.query}`)
+            const selectMovies = store.params.query
 
-            if (store.params.query !== '') {
-                  const selectMovies = store.params.query
+            let moviesUrl = store.callApi(`${store.urlMovies}?api_key=${store.params.appKey}&query=${selectMovies}`)
 
-                  moviesUrl = store.callApi(`${store.urlMovies}?api_key=${store.params.appKey}&query=${selectMovies}`)
+            let seriesUrl = store.callApi(`${store.urlSeries}?api_key=${store.params.appKey}&query=${selectMovies}`)
 
-                  seriesUrl = store.callApi(`${store.urlSeries}?api_key=${store.params.appKey}&query=${selectMovies}`)
-            }
             store.callApi(moviesUrl)
             store.callApi(seriesUrl)
-
       },
       flagsChange(lang) {
             if (lang === 'en') {

@@ -40,6 +40,7 @@ export default {
                                           <p>{{ movie.overview }}</p>
                                     </div>
 
+
                               </div>
                         </div>
                   </div>
@@ -50,68 +51,77 @@ export default {
     
 <style lang="scss" scoped>
 .container {
-      margin-top: 2rem;
+      margin: 2rem;
 
-      .card {
-            border: 3px solid whitesmoke;
-            border-radius: 0.5rem;
-            height: 100%;
-            position: relative;
-            /* background-color: rgb(141, 141, 141); */
+      .row {
+            flex-wrap: nowrap;
+      }
 
+      .col {
+            height: 520px;
 
-
-
-            .no-image {
+            .card {
+                  border: 3px solid whitesmoke;
+                  border-radius: 0.5rem;
                   height: 100%;
-                  background-color: black;
+                  position: relative;
+                  /* background-color: rgb(141, 141, 141); */
 
-            }
 
-            img.card-img-top {
-                  width: 100%;
-                  object-fit: cover;
 
-            }
 
-            .card-body {
-                  position: absolute;
-                  height: 100%;
-                  padding: 0.8rem;
-                  display: none;
-                  font-weight: bold;
-                  overflow-y: auto;
+                  .no-image {
+                        height: 100%;
+                        background-color: black;
 
-                  img.flag {
-                        width: 35px;
                   }
 
-                  .card-text {
+                  img.card-img-top {
+                        height: 100%;
+                        object-fit: cover;
+
+                  }
+
+                  .card-body {
+                        position: absolute;
+                        height: 100%;
+                        padding: 0.8rem;
+                        display: none;
                         font-weight: bold;
-                        padding: 0.8rem 0;
-                  }
+                        overflow-y: auto;
 
-                  .stars {
-                        img {
-                              width: 30px
+                        img.flag {
+                              width: 35px;
+                        }
+
+                        .card-text {
+                              font-weight: bold;
+                              padding: 0.8rem 0;
+                        }
+
+                        .stars {
+                              img {
+                                    width: 30px
+                              }
+                        }
+
+                        .overview {
+                              padding: 2rem 0;
                         }
                   }
 
-                  .overview {
-                        padding: 2rem 0;
+                  &:hover .card-img-top,
+                  &:hover .no-image {
+                        opacity: 0.4;
                   }
+
+                  &:hover .card-body {
+                        display: block;
+                  }
+
+
             }
-
-            &:hover .card-img-top,
-            &:hover .no-image {
-                  opacity: 0.4;
-            }
-
-            &:hover .card-body {
-                  display: block;
-            }
-
-
       }
+
 }
 </style>

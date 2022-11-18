@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@koas/v-hscroll": "^1.0.3",
     "@popperjs/core": "^2.11.6",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",

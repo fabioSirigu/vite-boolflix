@@ -33,6 +33,7 @@ header {
       z-index: 10000;
       box-shadow: 0px 2px 18px 2px #1d1d1d;
 
+
       .logo {
             img {
                   width: 300px;

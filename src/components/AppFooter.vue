@@ -13,7 +13,7 @@ export default {
                   <img src="/img/logo.png" alt="">
             </div>
             <div>
-                  <strong class="credits">Powered by NazOne</strong>
+                  <strong class="credits">Powered by <img src="/img/logoNazOne.png" alt=""></strong>
             </div>
       </footer>
 
@@ -43,6 +43,10 @@ footer {
       .credits {
             color: white;
 
+            img {
+                  width: 100px;
+                  filter: invert(100%);
+            }
       }
 }
 </style>

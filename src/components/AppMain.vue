@@ -27,6 +27,9 @@ main {
       position: relative;
       z-index: 1;
       height: calc(100vh - 450px);
-      overflow-y: scroll;
+      overflow-x: scroll;
+      display: flex;
+      align-items: center;
+
 }
 </style>
