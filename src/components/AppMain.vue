@@ -23,13 +23,12 @@ export default {
 <style lang="scss" scoped>
 main {
       margin-top: 300px;
-      padding-top: 50px;
       position: relative;
       z-index: 1;
       height: calc(100vh - 450px);
       overflow-x: scroll;
       display: flex;
       align-items: center;
-
+      overflow-x: auto;
 }
 </style>

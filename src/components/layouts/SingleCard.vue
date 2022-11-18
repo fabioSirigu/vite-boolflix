@@ -11,8 +11,8 @@ export default {
 </script>
 <template>
 
-      <div class="container">
-            <div class="row row-cols-3 g-4">
+      <div class="my-container">
+            <div class="row row-cols-6 g-3">
                   <div class="col" v-for="movie in store.movies">
                         <div class="card">
                               <div class="no-image" v-if="movie.poster_path === null"></div>
@@ -21,8 +21,10 @@ export default {
 
                               <div class="card-body">
                                     <h3 class="card-title card-text">Title: {{ movie.title || movie.name }}</h3>
-                                    <h4 class="card-text">Original Title: {{ movie.original_title || movie.original_name
-                                    }}
+                                    <h4 class="card-text"
+                                          v-show="(movie.title || movie.name) !== (movie.original_title || movie.original_name)">
+                                          Original Title: {{ movie.original_title || movie.original_name
+                                          }}
                                     </h4>
                                     <h4 class="card-text">Language:
 
@@ -50,8 +52,8 @@ export default {
 </template>
     
 <style lang="scss" scoped>
-.container {
-      margin: 2rem;
+.my-container {
+      margin: 0 2rem;
 
       .row {
             flex-wrap: nowrap;
